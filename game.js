@@ -30,7 +30,7 @@ const clickedCard = function () {
 
     else {
         cards.forEach(card => card.removeEventListener("click", clickedCard))
-        activeCard[1] = activeCard;
+        activeCards[1] = activeCard;
 
         setTimeout(function () {
             if (activeCards[0].className === activeCards[1].className) {
@@ -38,8 +38,8 @@ const clickedCard = function () {
             }
             else {
                 activeCards.forEach(card => card.classList.add("hidden"))
-            }
-        }, 1000)
+            };
+        }, 1000);
     };
 };
 
@@ -56,21 +56,10 @@ const init = function () {
             card.addEventListener("click", clickedCard)
         })
     }, 2000)
-
-}
-
-
-
+};
 
 
 init();
-
-
-
-
-
-
-
 
 
 
