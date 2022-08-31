@@ -14,6 +14,7 @@ div {
     flex-basis: 16%;
     flex-grow: 1;
     height: 33.33vh;
+    border-radius: 10%;
     /*
     background-color: black;
     */
