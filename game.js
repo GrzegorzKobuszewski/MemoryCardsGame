@@ -16,15 +16,16 @@ const activeCards = [];
 const gamePairs = cards.length / 2;
 let gameResult = 0;
 
-/* 
-if(gamePairs == gameResult) 
-*/
-
 const clickedCard = function () {
+
     activeCard = this;
+
+    if (activeCard == activeCards[0]) return;
+
     activeCard.classList.remove("hidden");
+
     if (activeCards.length === 0) {
-        activeCards[0] = activeCard;
+        activeCards[0] = activeCard;d
         return;
     }
 
@@ -35,11 +36,24 @@ const clickedCard = function () {
         setTimeout(function () {
             if (activeCards[0].className === activeCards[1].className) {
                 activeCards.forEach(card => card.classList.add("off"))
+                gameResult += 1;
+                cards = cards.filter(card => !card.classList.contains("off"))
+                if (gameResult == gamePairs) {
+                    const endTime = new Date().getTime();
+                    const gameTime =  (endTime - startTime)/1000;
+                    alert(`Wygrałeś grę! Twój czas to: ${gameTime} sekund`);
+                    location.reload();
+                }
             }
             else {
                 activeCards.forEach(card => card.classList.add("hidden"))
             };
-        }, 1000);
+
+            activeCard = "";
+            activeCards.length = 0;
+            cards.forEach(card => card.addEventListener("click", clickedCard));
+
+        }, 600);
     };
 };
 
