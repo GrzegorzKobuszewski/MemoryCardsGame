@@ -72,7 +72,6 @@ const init = function () {
     }, 2000)
 };
 
-
 init();
 
 
